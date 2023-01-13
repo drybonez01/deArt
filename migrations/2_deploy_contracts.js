@@ -1,27 +1,15 @@
-//const DappToken = artifacts.require("DappToken")
-// o var TutorialToken = artifacts.require("TutorialToken");
-//const DaiToken = artifacts.require("DaiToken")
-//const TokenFarm = artifacts.require("TokenFarm")
+const ShoesToken = artifacts.require("ShoesToken");
+const ShoesMarket = artifacts.require("ShoesMarket");
 
-//function(deployer, network, accounts)
 module.exports = async function(deployer) {
+    await deployer.deploy(ShoesToken);
 
-    // Deploy Mock DAI Token
-    await deployer.deploy(DaiToken)
-    const daiToken = await DaiToken.deployed()
+    const token = await ShoesToken.deployed()
 
-    // Deploy Dapp Token
-    await deployer.deploy(DappToken)
-    const dappToken = await DappToken.deployed()
+    await deployer.deploy(ShoesMarket, token.address)
 
-    // Deploy TokenFarm
-    await deployer.deploy(TokenFarm, dappToken.address, daiToken.address)
-    const tokenFarm = await TokenFarm.deployed()
+    const market = await ShoesMarket.deployed()
 
-    // Transfer all tokens to TokenFarm (1 million)
-    await dappToken.transfer(tokenFarm.address, '1000000000000000000000000')
+    await token.setMarketplace(market.address)
+};
 
-    // Transfer 100 Mock DAI tokens to investor
-    await daiToken.transfer(accounts[1], '100000000000000000000')
-
-}
