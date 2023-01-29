@@ -1,5 +1,7 @@
+/* hardhat.config.js */
 require("@nomiclabs/hardhat-waffle")
 
+const projectId="2KuUpyWSM4W0QeXy5mdRdJzwl6A"
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
