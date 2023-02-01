@@ -1,35 +1,35 @@
 import '../styles/globals.css'
+import Image from 'next/image';
+import IMG from './img/logo.svg'
 import Link from 'next/link'
 
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-      <nav className="border-b p-6">
-        <p className="text-4xl font-bold">SneakerNFT Marketplace</p>
-        <div className="flex mt-4">
-          <Link href="/" className="mr-4 text-pink-500">
-            
-              Home
-            
-          </Link>
-          <Link href="/create-nft" className="mr-6 text-pink-500">
-            
-              Sell NFT
-            
-          </Link>
-          <Link href="/my-nfts" className="mr-6 text-pink-500">
-            
-              My NFTs
-            
-          </Link>
-          <Link href="/dashboard" className="mr-6 text-pink-500">
-            
-              Dashboard
-            
-          </Link>
-        </div>
-      </nav>
-      <Component {...pageProps} />
+        <nav class="relative container mx-auto p-6">
+            <div class="flex items-center justify-between">
+            <div class="pt-2">
+                <Image src={IMG} alt={""}/>
+            </div>
+
+                <div class="hidden space-x-6 md:flex">
+                    <a href="/" class="hover:text-darkGrayishBlue">Home</a>
+                    <a href="/create-nft" class="hover:text-darkGrayishBlue">Sell NFT</a>
+                    <a href="/my-nfts" class="hover:text-darkGrayishBlue">My NFTs</a>
+                    <a href="/dashboard" class="hover:text-darkGrayishBlue">Dashboard</a>
+                </div>
+
+                <button
+                id="menu-btn"
+                class="block hamburger md:hidden focus:outline-none"
+                >
+                <span class="hamburger-top"></span>
+                <span class="hamburger-middle"></span>
+                <span class="hamburger-bottom"></span>
+                </button>
+            </div>
+        </nav>
+        <Component {...pageProps} />
     </div>
   );
 }

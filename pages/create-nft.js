@@ -16,6 +16,7 @@ const client = ipfsHttpClient({
       authorization: auth,
   }
 });
+
 import {
   marketplaceAddress
 } from '../config'
@@ -36,26 +37,29 @@ export default function CreateItem() {
           progress: (prog) => console.log('received: ${prog}')
         }
       )
-    const add=added.path
-     const url = 'https://ipfs.io/ipfs/'+add
-     //const url = 'https://sdurl.infura-ipfs.io/ipfs/${added.path}'
+      const add = added.path
+      const url = 'https://ipfs.io/ipfs/' + add
+      //const url = 'https://sdurl.infura-ipfs.io/ipfs/${added.path}'
       setFileUrl(url)
     } catch (error) {
       console.log('Error uploading file: ', error)
     }  
   }
-  async function uploadToIPFS (){
+
+  async function uploadToIPFS () {
     const { name, description, price } = formInput
     if (!name || !description || !price || !fileUrl) return
+
     /* first, upload to IPFS */
     const data = JSON.stringify({
       name, description, image: fileUrl
     })
+    
     try {
       const added = await client.add(data)
-      const add=added.path
-      const url = 'https://ipfs.io/ipfs/'+add
-          //const url = 'https://sdurl.infura-ipfs.io/ipfs/${added.path}'
+      const add = added.path
+      const url = 'https://ipfs.io/ipfs/' + add
+      //const url = 'https://sdurl.infura-ipfs.io/ipfs/${added.path}'
       /* after file is uploaded to IPFS, return the URL to use it in the transaction */
       return url
     } catch (error) {
