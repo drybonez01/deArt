@@ -3,6 +3,10 @@ import { ethers } from 'ethers'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
+import { Formik, Form } from "formik"
+import * as yup from "yup"
+
+import background from './img/sfondo.png'
 
 const projectId = "2KuUpyWSM4W0QeXy5mdRdJzwl6A";
 const projectSecret = "63c20345fceffcb679e37f434ec37e92";
@@ -85,8 +89,17 @@ export default function CreateItem() {
     router.push('/')
   }
 
+  const initialValues = {
+    name: "",
+    description: "",
+  };
+
+  const validationSchema = yup.object().shape({
+    name: yup.string().required(),
+    description: yup.string().required(),
+  });
   return (
-    <div className="flex justify-center">
+    /*<div className="flex justify-center">
       <div className="w-1/2 flex flex-col pb-12">
         <input 
           placeholder="Asset Name"
@@ -118,6 +131,59 @@ export default function CreateItem() {
           Create NFT
         </button>
       </div>
-    </div>
+    </div>*/
+    <div className="flex justify-center md:pt-10" style={{backgroundImage:'url(${background})'}}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={listNFTForSale}
+      validateOnMount
+      validationSchema={validationSchema}
+    >
+      {({ isValid }) => (
+        <Form className="w-full p-2 md:w-5/6 md:p-10 xl:w-2/3 2xl:w-3/5 border-2 rounded-lg bg-white">
+          <h1 className="py-5 text-2xl font-bold">Create new item</h1>
+          <div className="flex flex-col lg:flex-row pt-5">
+
+            <div tabIndex="0" className="h-96 sm:w-96 flex justify-center items-center overflow-hidden lg:mr-4 cursor-pointer rounded-lg border-dashed border-2">
+              <input type="file" 
+              accept="image/jpeg, image/png" 
+                autoComplete="off" tabIndex="-1" 
+                 onChange={onChange} 
+                />
+             {
+          fileUrl && (
+            <img className="rounded mt-4" width="350" src={fileUrl} />
+          )
+        }
+                
+                </div>
+             
+            <div className="flex-1 flex flex-col justify-between pt-2 lg:pt-0">
+            <input 
+          placeholder="Asset Name"
+          className="mt-8 border rounded p-4"
+          onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
+        />
+        <textarea
+          placeholder="Asset Description"
+          className="mt-2 border rounded p-4"
+          onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
+        />
+        <input
+          placeholder="Asset Price in Eth"
+          className="mt-2 border rounded p-4"
+          onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
+        />
+        
+        <button onClick={listNFTForSale} className="font-bold mt-4 text-white rounded p-4 shadow-lg" style={{background:"cornflowerblue"}}>
+          Create NFT
+        </button>
+            </div>
+          </div>
+        </Form>
+      )}
+    </Formik>
+  </div>
+
   )
 }

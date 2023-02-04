@@ -6,26 +6,26 @@ import Link from 'next/link'
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-        <nav class="relative container mx-auto p-6">
-            <div class="flex items-center justify-between">
-            <div class="pt-2">
-                <Image src={IMG} alt={""}/>
+        <nav className="relative container mx-auto p-6" style={{borderBottom:"inset"}}>
+            <div className="flex items-center justify-between">
+            <div className="pt-2" >
+                <Image src={IMG} alt={""} style={{background:"cornflowerblue"}}/>
             </div>
 
-                <div class="hidden space-x-6 md:flex">
-                    <a href="/" class="hover:text-darkGrayishBlue">Home</a>
-                    <a href="/create-nft" class="hover:text-darkGrayishBlue">Sell NFT</a>
-                    <a href="/my-nfts" class="hover:text-darkGrayishBlue">My NFTs</a>
-                    <a href="/dashboard" class="hover:text-darkGrayishBlue">Dashboard</a>
+                <div className="hidden space-x-6 md:flex" style={{color: "midnightBlue"}}>
+                    <a href="/" className="hover:text">Home</a>
+                    <a href="/create-nft" className="hover:text-darkGrayishBlue">Sell NFT</a>
+                    <a href="/my-nfts" className="hover:text-darkGrayishBlue">My NFTs</a>
+                    <a href="/dashboard" className="hover:text-darkGrayishBlue">Dashboard</a>
                 </div>
 
                 <button
                 id="menu-btn"
-                class="block hamburger md:hidden focus:outline-none"
+                className="block hamburger md:hidden focus:outline-none"
                 >
-                <span class="hamburger-top"></span>
-                <span class="hamburger-middle"></span>
-                <span class="hamburger-bottom"></span>
+                <span className="hamburger-top"></span>
+                <span className="hamburger-middle"></span>
+                <span className="hamburger-bottom"></span>
                 </button>
             </div>
         </nav>

@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from 'web3modal'
-
+import background from './pages/img/sfondo.png'
 import {
   marketplaceAddress
 } from '../config'
@@ -60,7 +60,14 @@ export default function Home() {
     await transaction.wait()
     loadNFTs()
   }
-  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
+
+  if (loadingState === 'loaded' && !nfts.length) return (
+    <div className="flex justify-center" style={{backgroundImage: 'url("${background}")'}}>
+  <h1 className="px-20 py-10 text-3xl" 
+    
+  >No items in marketplace</h1>
+  </div> 
+  )
   return (
     <div className="flex justify-center">
       <div className="px-4" style={{ maxWidth: '1600px' }}>
@@ -85,5 +92,7 @@ export default function Home() {
         </div>
       </div>
     </div>
+   
   )
+
 }
