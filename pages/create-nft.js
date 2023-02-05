@@ -6,8 +6,6 @@ import Web3Modal from 'web3modal'
 import { Formik, Form } from "formik"
 import * as yup from "yup"
 
-import background from './img/sfondo.png'
-
 const projectId = "2KuUpyWSM4W0QeXy5mdRdJzwl6A";
 const projectSecret = "63c20345fceffcb679e37f434ec37e92";
 const auth = 'Basic ' + btoa(projectId + ':' + projectSecret);
@@ -132,7 +130,7 @@ export default function CreateItem() {
         </button>
       </div>
     </div>*/
-    <div className="flex justify-center md:pt-10" style={{backgroundImage:'url(${background})'}}>
+    <div className="flex justify-center">
     <Formik
       initialValues={initialValues}
       onSubmit={listNFTForSale}
@@ -140,11 +138,17 @@ export default function CreateItem() {
       validationSchema={validationSchema}
     >
       {({ isValid }) => (
-        <Form className="w-full p-2 md:w-5/6 md:p-10 xl:w-2/3 2xl:w-3/5 border-2 rounded-lg bg-white">
-          <h1 className="py-5 text-2xl font-bold">Create new item</h1>
+        <Form className="w-full p-2 md:w-5/6 md:p-10 xl:w-2/3 2xl:w-3/5 border-2 rounded-lg bg-gray-500 bg-opacity-30"
+          style={{
+            padding: "1rem",
+            marginTop: "2rem",
+            marginBottom: "2rem"
+          }}>
+          <h1 className="text-2xl font-bold">Create new item</h1>
           <div className="flex flex-col lg:flex-row pt-5">
-
-            <div tabIndex="0" className="h-96 sm:w-96 flex justify-center items-center overflow-hidden lg:mr-4 cursor-pointer rounded-lg border-dashed border-2">
+            <div tabIndex="0"
+              className="h-96 sm:w-96 flex justify-center items-center overflow-hidden
+              lg:mr-4 cursor-pointer rounded-lg border-dashed border-2">
               <input type="file" 
               accept="image/jpeg, image/png" 
                 autoComplete="off" tabIndex="-1" 
