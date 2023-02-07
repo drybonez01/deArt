@@ -1,13 +1,16 @@
-# Sample Hardhat Project
+# deArt
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
-
+To run the blockchain:
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
 npx hardhat node
-npx hardhat run scripts/deploy.js
+```
+
+To deploy the contract:
+```shell
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+To start the app:
+```shell
+npm run dev
 ```
