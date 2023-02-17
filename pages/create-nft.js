@@ -130,64 +130,64 @@ export default function CreateItem() {
         </button>
       </div>
     </div>*/
-    <div className="flex justify-center">
-    <Formik
-      initialValues={initialValues}
-      onSubmit={listNFTForSale}
-      validateOnMount
-      validationSchema={validationSchema}
-    >
-      {({ isValid }) => (
-        <Form className="w-full p-2 md:w-5/6 md:p-10 xl:w-2/3 2xl:w-3/5 border-2 rounded-lg bg-gray-500 bg-opacity-30"
-          style={{
-            padding: "1rem",
-            marginTop: "2rem",
-            marginBottom: "2rem"
-          }}>
-          <h1 className="text-2xl font-bold">Create new item</h1>
-          <div className="flex flex-col lg:flex-row pt-5">
-            <div tabIndex="0"
-              className="h-96 sm:w-96 flex justify-center items-center overflow-hidden
-              lg:mr-4 cursor-pointer rounded-lg border-dashed border-2">
-              <input type="file" 
-              accept="image/jpeg, image/png" 
-                autoComplete="off" tabIndex="-1" 
-                 onChange={onChange} 
-                />
-             {
-          fileUrl && (
-            <img className="rounded mt-4" width="350" src={fileUrl} />
-          )
-        }
-                
-                </div>
-             
-            <div className="flex-1 flex flex-col justify-between pt-2 lg:pt-0">
-            <input 
-          placeholder="Asset Name"
-          className="mt-8 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
-        />
-        <textarea
-          placeholder="Asset Description"
-          className="mt-2 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
-        />
-        <input
-          placeholder="Asset Price in Eth"
-          className="mt-2 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
-        />
-        
-        <button onClick={listNFTForSale} className="font-bold mt-4 text-white rounded p-4 shadow-lg" style={{background:"cornflowerblue"}}>
-          Create NFT
-        </button>
-            </div>
-          </div>
-        </Form>
-      )}
-    </Formik>
-  </div>
 
+    <div className="flex justify-center">
+      <Formik
+        initialValues={initialValues}
+        onSubmit={listNFTForSale}
+        validateOnMount
+        validationSchema={validationSchema}>
+        {({ isValid }) => (
+          <Form className="w-full px-5 py-4 mx-40 my-10
+          rounded bg-black/75 text-white">
+            <h1 className="text-3xl font-bold">
+              Create new item
+            </h1>
+            
+            <div className="flex flex-col lg:flex-row pt-5">
+              <div tabIndex="0"
+                className="h-96 sm:w-96 flex justify-center items-center overflow-hidden
+                lg:mr-4 cursor-pointer rounded-lg border-dashed border-2">
+                <input type="file" 
+                  accept="image/jpeg, image/png" 
+                  autoComplete="off" tabIndex="-1" 
+                  onChange={onChange}/>
+
+                {
+                  fileUrl && (
+                    <img className="rounded mt-4" width="350" src={fileUrl} />
+                  )
+                }
+              </div>
+              
+              <div className="flex-1 flex flex-col pt-2 lg:pt-0">
+                <input 
+                  placeholder="Asset Name"
+                  className="mt-2 border rounded p-4"
+                  onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
+                />
+
+                <textarea
+                  placeholder="Asset Description"
+                  className="flex-1 mt-2 border rounded p-4"
+                  onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
+                />
+
+                <input
+                  placeholder="Asset Price in Eth"
+                  className="mt-2 border rounded p-4"
+                  onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
+                />
+          
+                <button onClick={listNFTForSale} className="font-bold mt-4 text-white rounded
+                p-4 shadow-lg" style={{background:"cornflowerblue"}}>
+                  Create NFT
+                </button>
+              </div>
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </div>
   )
 }

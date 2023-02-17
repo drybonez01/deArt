@@ -52,6 +52,24 @@ table {
 @tailwind utilities;
 
 @layer components {
+	.anim_gradient {
+		background: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+		backgroundSize : "400% 400%";
+		animation : "gradient 25s ease infinite";
+    }
+			  
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	};
+		
 	.btn-primary {
 		@apply px-3 py-2 text-white no-underline bg-blue-500 rounded hover:bg-blue-600 hover:text-blue-200
 	}

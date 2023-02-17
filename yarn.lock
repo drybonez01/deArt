@@ -869,7 +869,7 @@
   resolved "https://registry.npmjs.org/@next/env/-/env-13.1.2.tgz"
   integrity sha512-PpT4UZIX66VMTqXt4HKEJ+/PwbS+tWmmhZlazaws1a+dbUA5pPdjntQ46Jvj616i3ZKN9doS9LHx3y50RLjAWg==
 
-"@next/font@13.1.2":
+"@next/font@^13.1.2":
   version "13.1.2"
   resolved "https://registry.npmjs.org/@next/font/-/font-13.1.2.tgz"
   integrity sha512-NXGXGFGiOKEnvBIHq9cdFTKbHO2/4B3Zd9K27M7j1DioIQVar7oVRqZMYs0h3XMVEZLwjjkdAtqRPCzzd3RtXg==
