@@ -7,7 +7,7 @@ const myFont = localFont({ src: './fonts/SourceSansPro-SemiBold.ttf'})
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className='anim_gradient' style={{width: "100vw", height: "100vh"}}>
+    <div className='anim_gradient w-screen min-h-screen pb-1'>
       <div className={myFont.className}>
         <nav className="relative p-3 px-5 bg-sky-200
           border-solid border-b-8 border-sky-500">
@@ -23,8 +23,10 @@ function MyApp({ Component, pageProps }) {
             </div>
           </div>
         </nav>
-        
-        <Component {...pageProps} />
+
+        <div>
+          <Component {...pageProps}/>
+        </div>
       </div>
     </div>
   );

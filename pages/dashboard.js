@@ -6,8 +6,6 @@ import {
   marketplaceAddress
 } from '../config'
 
-import background from './img/dashboard.png'
-
 import NFTMarketplace from '../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json'
 
 export default function CreatorDashboard() {
@@ -38,6 +36,8 @@ export default function CreatorDashboard() {
         seller: i.seller,
         owner: i.owner,
         image: meta.data.image,
+        name: meta.data.name,
+        description: meta.data.description,
       }
       return item
     }))
@@ -46,21 +46,24 @@ export default function CreatorDashboard() {
     setLoadingState('loaded') 
   }
   if (loadingState === 'loaded' && !nfts.length) return (
-  <div style={{backgroundImage:'href(../img/dashboard.png)'}}>
-  <h1 className="py-10 px-20 text-3xl">No NFTs listed</h1>
-  </div>
+    <div>
+      <h1 className="py-10 px-20 text-3xl">No NFTs listed</h1>
+    </div>
   )
   return (
     <div>
-      <div className="p-4">
-        <h2 className="text-2xl py-2">Items Listed</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+      <div className="p-4 m-5 rounded bg-black/75
+        flex flex-col">
+        <h2 className="text-4xl text-center py-2 text-white">Items Listed</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
+              <div key={i} className="border shadow rounded overflow-hidden">
                 <img src={nft.image} className="rounded" />
                 <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+                  <p className="text-2xl font-bold text-white">{nft.name}</p>
+                  <p className="text-xl text-white">{nft.price} Eth</p>
                 </div>
               </div>
             ))
@@ -68,9 +71,5 @@ export default function CreatorDashboard() {
         </div>
       </div>
     </div>
-    
-
-      
-     
   )
 }

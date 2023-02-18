@@ -64,7 +64,7 @@ export default function Home() {
   if (loadingState === 'loaded' && !nfts.length) return (
     <div className="flex justify-center">
       <h1 className="px-10 py-7 my-10 rounded text-3xl bg-black/75 text-white">
-        No items in marketplace.
+        No items are currently available.
       </h1>
     </div> 
   )

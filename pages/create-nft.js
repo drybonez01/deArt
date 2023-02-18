@@ -32,6 +32,8 @@ export default function CreateItem() {
 
   async function onChange(e) {
     const file = e.target.files[0]
+    const element = document.getElementById('upload_button')
+    element.remove()
     try {
       const added = await client.add(
         file,
@@ -41,7 +43,6 @@ export default function CreateItem() {
       )
       const add = added.path
       const url = 'https://ipfs.io/ipfs/' + add
-      //const url = 'https://sdurl.infura-ipfs.io/ipfs/${added.path}'
       setFileUrl(url)
     } catch (error) {
       console.log('Error uploading file: ', error)
@@ -147,15 +148,17 @@ export default function CreateItem() {
             <div className="flex flex-col lg:flex-row pt-5">
               <div tabIndex="0"
                 className="h-96 sm:w-96 flex justify-center items-center overflow-hidden
-                lg:mr-4 cursor-pointer rounded-lg border-dashed border-2">
+                lg:mr-4 bg-black/50 rounded-lg border-solid border-2">
                 <input type="file" 
                   accept="image/jpeg, image/png" 
-                  autoComplete="off" tabIndex="-1" 
+                  autoComplete="off" tabIndex="-1"
+                  id='upload_button'
                   onChange={onChange}/>
-
                 {
                   fileUrl && (
-                    <img className="rounded mt-4" width="350" src={fileUrl} />
+                    <img
+                      className="object-cover h-full w-full"
+                      src={fileUrl}/>
                   )
                 }
               </div>
@@ -163,19 +166,20 @@ export default function CreateItem() {
               <div className="flex-1 flex flex-col pt-2 lg:pt-0">
                 <input 
                   placeholder="Asset Name"
-                  className="mt-2 border rounded p-4"
+                  className="mt-2 border rounded p-4 text-black"
                   onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
                 />
 
                 <textarea
                   placeholder="Asset Description"
-                  className="flex-1 mt-2 border rounded p-4"
+                  className="flex-1 mt-2 border rounded p-4 text-black"
+                  style={{resize: 'none'}}
                   onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
                 />
 
                 <input
                   placeholder="Asset Price in Eth"
-                  className="mt-2 border rounded p-4"
+                  className="mt-2 border rounded p-4 text-black"
                   onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
                 />
           
