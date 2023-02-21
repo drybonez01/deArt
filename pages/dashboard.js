@@ -54,20 +54,36 @@ export default function CreatorDashboard() {
     <div>
       <div className="p-4 m-5 rounded bg-black/75
         flex flex-col">
-        <h2 className="text-4xl text-center py-2 text-white">Items Listed</h2>
+        <h2 className="text-4xl text-center text-white mb-5">Items Listed</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded overflow-hidden">
-                <img src={nft.image} className="rounded" />
-                <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">{nft.name}</p>
+        <div className='inline-flex items-center justify-center w-full my-1'>
+          <hr className='w-11/12 border-2 rounded border-sky-500'/>
+        </div>
+
+        <div className='flex flex-row flex-wrap my-6 justify-center w-full'>
+        {
+          nfts.map((nft, i) => (
+            <div key={i} className="border shadow rounded overflow-hidden w-5/12 mx-8 my-4">
+              <div className='flex flex-row'>
+                <div className='w-8/12 h-72'>
+                  <img src={nft.image} className="object-cover h-full w-full"/>
+                </div>
+
+                <div className="w-4/12 p-4 bg-black">
+                  <p className="text-xl font-bold text-white">{nft.name}</p>
+                  <hr className='my-1 border-2 rounded border-sky-500'/>
                   <p className="text-xl text-white">{nft.price} Eth</p>
                 </div>
               </div>
-            ))
-          }
+
+              <div className='p-2 bg-sky-200 h-28 overflow-scroll'>
+                <p>
+                  {nft.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
         </div>
       </div>
     </div>
