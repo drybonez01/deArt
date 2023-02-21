@@ -73,4 +73,20 @@ table {
 	.btn-primary {
 		@apply px-3 py-2 text-white no-underline bg-violet-500 rounded hover:bg-violet-600 hover:text-violet-200
 	}
+
+	.navbar {
+
+	}
+
+	.navbar a {
+		@apply text-white text-xl transition
+	}
+
+	.navbar:hover a {
+		@apply text-opacity-25
+	}
+
+	.navbar a:hover {
+		@apply text-violet-500
+	}
 }

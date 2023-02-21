@@ -15,11 +15,11 @@ function MyApp({ Component, pageProps }) {
             <div>
               <Image src={IMG} alt={""} className="max-w-[20%]"/>
             </div>
-            <div className="hidden space-x-5 md:flex">
-              <a href="/" className="btn-primary">Home</a>
-              <a href="/create-nft" className="btn-primary">Sell NFT</a>
-              <a href="/my-nfts" className="btn-primary">My NFTs</a>
-              <a href="/dashboard" className="btn-primary">Dashboard</a>
+            <div className="navbar hidden space-x-6 md:flex">
+              <a href="/">Home</a>
+              <a href="/create-nft">Sell NFT</a>
+              <a href="/my-nfts">My NFTs</a>
+              <a href="/dashboard">Dashboard</a>
             </div>
           </div>
         </nav>
