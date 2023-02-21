@@ -183,8 +183,7 @@ export default function CreateItem() {
                   onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
                 />
           
-                <button onClick={listNFTForSale} className="font-bold mt-4 text-white rounded
-                p-4 shadow-lg" style={{background:"cornflowerblue"}}>
+                <button onClick={listNFTForSale} className="btn-primary mt-4 p-4">
                   Create NFT
                 </button>
               </div>

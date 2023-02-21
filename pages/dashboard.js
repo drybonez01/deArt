@@ -46,8 +46,10 @@ export default function CreatorDashboard() {
     setLoadingState('loaded') 
   }
   if (loadingState === 'loaded' && !nfts.length) return (
-    <div>
-      <h1 className="py-10 px-20 text-3xl">No NFTs listed</h1>
+    <div className="flex justify-center">
+      <h1 className="px-10 py-7 my-10 rounded text-3xl bg-black/75 text-white">
+        No NFTs listed
+      </h1>
     </div>
   )
   return (
@@ -57,7 +59,7 @@ export default function CreatorDashboard() {
         <h2 className="text-4xl text-center text-white mb-5">Items Listed</h2>
 
         <div className='inline-flex items-center justify-center w-full my-1'>
-          <hr className='w-11/12 border-2 rounded border-sky-500'/>
+          <hr className='w-11/12 border-2 rounded border-violet-500'/>
         </div>
 
         <div className='flex flex-row flex-wrap my-6 justify-center w-full'>
@@ -71,12 +73,12 @@ export default function CreatorDashboard() {
 
                 <div className="w-4/12 p-4 bg-black">
                   <p className="text-xl font-bold text-white">{nft.name}</p>
-                  <hr className='my-1 border-2 rounded border-sky-500'/>
+                  <hr className='my-1 border-2 rounded border-violet-500'/>
                   <p className="text-xl text-white">{nft.price} Eth</p>
                 </div>
               </div>
 
-              <div className='p-2 bg-sky-200 h-28 overflow-scroll'>
+              <div className='p-2 bg-violet-300 h-28 overflow-scroll'>
                 <p>
                   {nft.description}
                 </p>

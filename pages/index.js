@@ -70,27 +70,32 @@ export default function Home() {
   )
 
   return (
-    <div className="flex justify-center">
-      <div className="px-4" style={{ maxWidth: '1600px' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} />
-                <div className="p-4">
-                  <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
-                  <div style={{ height: '70px', overflow: 'hidden' }}>
-                    <p className="text-gray-400">{nft.description}</p>
-                  </div>
-                </div>
-                <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">{nft.price} ETH</p>
-                  <button className="mt-4 w-full bg-pink-500 text-white font-bold py-2 px-12 rounded"
-                  onClick={() => buyNft(nft)}>Buy</button>
+    <div>
+      <div className="p-4 m-5 rounded bg-black/75
+        flex flex-col">
+        <div className='flex flex-row flex-wrap my-6 justify-center w-full'>
+        {
+          nfts.map((nft, i) => (
+            <div key={i} className="border shadow rounded overflow-hidden w-5/12 mx-8 my-4">
+              <div className='flex flex-row'>
+                <div className='w-full h-72'>
+                  <img src={nft.image} className="object-cover h-full w-full"/>
                 </div>
               </div>
-            ))
-          }
+
+              <div className="w-full h-64 p-4 bg-black">
+                <p className="text-3xl font-bold text-white">{nft.name}</p>
+                <hr className='my-2 border-2 rounded border-violet-500'/>
+                <p className="text-xl text-white">{nft.price} Eth</p>
+              </div>
+
+              <div className='inline-flex items-center justify-center w-full bg-black'>
+                <button className="btn-primary m-3 p-2 w-11/12"
+                    onClick={() => buyNft(nft)}>Buy</button>
+              </div>
+            </div>
+          ))
+        }
         </div>
       </div>
     </div>
